@@ -125,7 +125,7 @@ class FisbaReadyBeam():
         self.laser.reset_output_buffer()
         self.laser.reset_input_buffer()
         # Fill placeholder with sequence number
-        self.sequence += 1
+        self.sequence = (self.sequence + 1) % 0x10000
         command = command.replace('----', '{:04X}'.format(self.sequence))
         # Calculate checksum
         crc_calculator = Calculator(Crc16.XMODEM)

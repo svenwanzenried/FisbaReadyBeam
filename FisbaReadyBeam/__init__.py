@@ -128,7 +128,7 @@ class FisbaReadyBeam():
         self.sequence += 1
         command = command.replace('----', '{:04X}'.format(self.sequence))
         # Calculate checksum
-        crc_calculator = Calculator(Crc16.CCITT)
+        crc_calculator = Calculator(Crc16.XMODEM)
         checksum = crc_calculator.checksum(command.encode())
         command += '{:04X}'.format(checksum)
         command += '\r'
